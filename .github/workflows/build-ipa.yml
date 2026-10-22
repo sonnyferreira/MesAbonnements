@@ -1,0 +1,47 @@
+name: Compiler le fichier .ipa
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # bouton « Run workflow » dans l'onglet Actions
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer XcodeGen
+        run: brew install xcodegen
+
+      - name: Générer le projet Xcode
+        run: xcodegen generate
+
+      - name: Compiler l'app (sans signature)
+        run: |
+          xcodebuild build \
+            -project MesAbonnements.xcodeproj \
+            -scheme MesAbonnements \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Emballer en .ipa
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/MesAbonnements.app Payload/
+          zip -qr MesAbonnements.ipa Payload
+
+      - name: Mettre le .ipa à télécharger
+        uses: actions/upload-artifact@v4
+        with:
+          name: MesAbonnements-ipa
+          path: MesAbonnements.ipa
+          retention-days: 14
