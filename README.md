@@ -13,33 +13,13 @@ Elle est compilée gratuitement par GitHub, puis installée depuis Windows avec 
 
 ---
 
-## Étape 1 — Mettre le code sur GitHub (une seule fois)
-
-1. Créez un compte gratuit sur https://github.com.
-2. Cliquez sur **New repository**, nommez-le `MesAbonnements` et choisissez **Public**.
-   Les minutes de compilation macOS sont gratuites et illimitées pour un dépôt public. En privé, vous auriez environ 40 compilations par mois.
-3. Installez **GitHub Desktop** (https://desktop.github.com), puis connectez-vous.
-4. Dans GitHub Desktop, faites **File → Clone repository** et choisissez `MesAbonnements`.
-5. Copiez **tout le contenu** de ce dossier dans le dossier cloné, y compris le dossier `.github`.
-   Dans l'Explorateur Windows, il faut parfois cocher **Affichage → Éléments masqués** pour le voir.
-6. Dans GitHub Desktop, écrivez un message (ex. « V1 »), cliquez sur **Commit to main**, puis sur **Push origin**.
-
-## Étape 2 — Récupérer le fichier .ipa
-
-1. Sur la page du dépôt GitHub, ouvrez l'onglet **Actions**.
-2. La compilation « Compiler le fichier .ipa » démarre toute seule et dure environ 5 minutes. Attendez la coche verte ✅.
-3. Cliquez dessus. En bas, dans **Artifacts**, téléchargez `MesAbonnements-ipa`.
-4. Dézippez-le : vous obtenez `MesAbonnements.ipa`.
-
-Pour relancer une compilation sans rien modifier, ouvrez **Actions**, choisissez « Compiler le fichier .ipa » et cliquez sur **Run workflow**.
-
-## Étape 3 — Préparer le PC et l'iPhone (une seule fois)
+## Étape 1 — Préparer le PC et l'iPhone (une seule fois)
 
 1. Sur le PC, installez **Appareils Apple** depuis le Microsoft Store, ou iTunes, pour que l'iPhone soit reconnu en USB.
 2. Installez **Sideloadly** depuis https://sideloadly.io.
 3. Branchez l'iPhone et répondez **Se fier à cet ordinateur**.
 
-## Étape 4 — Installer l'app
+## Étape 2 — Installer l'app
 
 1. Ouvrez Sideloadly. Votre iPhone apparaît dans la liste.
 2. Glissez `MesAbonnements.ipa` dans la fenêtre.
